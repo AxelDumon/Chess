@@ -54,7 +54,7 @@ squares := pawn targetSquares.
 
 { #category : 'tests' }
 MyPawnTests >> testNormalMove [
-
+"test"
 |pawn board squares|
 
 board := MyChessBoard empty.
