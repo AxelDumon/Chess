@@ -74,14 +74,21 @@ squares := pawn targetSquares.
 { #category : 'tests' }
 MyPawnTests >> testTwoTilesMove [
 
-|pawn board squares|
+|whitePawn blackPawn board whiteSquares blackSquares|
 
 board := MyChessBoard empty.
-board at: 'f7' put: (pawn:= MyPawn black).
+board at: 'f7' put: (blackPawn := MyPawn black).
+board at: 'f2' put: (whitePawn := MyPawn white).
 
-squares := pawn targetSquares.
+whiteSquares := whitePawn targetSquares.
 	self 
-		assertCollection: squares
+		assertCollection: whiteSquares
 		includesAll:
-			( #(f8 f9) collect: [ :name | board at: name ]) 
+			( #(f3 f4) collect: [ :name | board at: name ]).
+
+blackSquares := blackPawn targetSquares.
+	self 
+		assertCollection: blackSquares
+		includesAll:
+			( #(f6 f5) collect: [ :name | board at: name ]).
 ]
